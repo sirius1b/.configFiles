@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+## This script updated the system files, from repo config(s)
+declare -A src
+declare -A dest
+
+## program decleration
+program=("vim"  "vis" "alacritty" 'conky' 'dunst' 'i3' 'lf' 'mpv' 'newsboat' 'picom' 'polybar' 'ranger')
+
+## general script folder accessed by configs, in case ...
+cp -r ./scripts /home/$( whoami ) && echo "Scripts Placed ..."
+
+hp=/home/$( whoami )/
+
+## src paths of program keys
+src[vim]='./Files/.vimrc'
+src[vis]='./Files/vis'
+src[alacritty]='./Files/alacritty'
+src[conky]='./Files/conky'
+src[dunst]='./Files/dunst'
+src[i3]='./Files/i3'
+src[lf]='./Files/lf'
+src[mpv]='./Files/mpv'
+src[newsboat]='./Files/newsboat'
+src[picom]='./Files/picom'
+src[polybar]='./Files/polybar'
+src[ranger]='./Files/ranger'
+
+
+
+## dest paths -> program keys
+dest[vim]=$hp
+dest[vis]=$hp/.config/
+dest[alacritty]=$hp/.config/
+dest[conky]=$hp/.config/
+dest[dunst]=$hp/.config/
+dest[i3]=$hp/.config/
+dest[lf]=$hp/.config/
+dest[mpv]=$hp/.config/
+dest[newsboat]=$hp/.config/
+dest[picom]=$hp/.config/
+dest[polybar]=$hp/.config/
+dest[ranger]=$hp/.config/
+
+
+
+## looping
+for prog  in ${program[@]}; do
+    cp -r $src[$prog] $dest[$prog]
+done
+echo "All the config(s) placed successfully"
+

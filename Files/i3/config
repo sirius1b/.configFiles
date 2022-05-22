@@ -1,0 +1,223 @@
+
+# ======================================= Variables ==========================================
+
+set $mod Mod4
+# set_from_resource $fg i3wm.color15
+set $fg #ffffff
+set_from_resource $bg i3wm.color0
+set_from_resource $bg_alt i3wm.color0
+set_from_resource $fg_alt i3wm.color7
+set_from_resource $bd_foc i3wm.color1
+set_from_resource $bd_rest i3wm.color6
+
+set $refresh_i3status killall -SIGUSR1 i3status
+floating_modifier $mod
+set $ws1  "1"
+set $ws2  "2 "
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+set $resize_px 10
+set $resize_ppt 10
+
+# ======================================= Bindings ==========================================
+
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && polybar-msg hook mic-volume 1 && $refresh_i3status 
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec  alacritty
+bindsym $mod+Shift+q kill
+
+#bindsym $mod+d exec dmenu_run -bw 10 -l 20 -g 1
+bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"  -bw 10 -l 20 -g 1
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+g split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+# bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+c focus child 
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+m exec ~/scripts/menu
+
+mode "resize" {
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width $resize_px px or $resize_ppt ppt
+        bindsym j resize grow height $resize_px px or $resize_ppt ppt
+        bindsym k resize shrink height $resize_px px or $resize_ppt ppt
+        bindsym l resize grow width $resize_px px or $resize_ppt ppt
+
+        bindsym Left resize shrink width $resize_px px or $resize_ppt ppt
+        bindsym Down resize grow height $resize_px px or $resize_ppt ppt
+        bindsym Up resize shrink height $resize_px px or $resize_ppt ppt
+        bindsym Right resize grow width $resize_px px or $resize_ppt ppt
+
+        # Change Gap Spacing
+        bindsym p gaps inner current plus 2
+        bindsym o gaps inner current minus 2
+        bindsym 0 gaps inner current set 0
+
+        bindsym Shift+p gaps outer current plus 2
+        bindsym Shift+o gaps outer current minus 2
+        bindsym Shift+0 gaps outer current set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+bindsym $mod+p move workspace to output right
+bindsym $mod+Shift+x exec i3lock
+
+#bindsym XF86MonBrightnessUp exec sh ~/.config/i3/backlight.sh -inc 40 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec sh ~/.config/i3/backlight.sh -dec 40 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec polybar-msg hook brightness 2 # increase screen brightness
+bindsym XF86MonBrightnessDown exec polybar-msg hook brightness 3 # decrease screen brightness
+
+bindsym Print      exec python3 ~/scripts/screenshot window 
+#bindsym $mod+Print exec python3 ~/.config/i3/screenshot.py custom
+bindsym $mod+Shift+n exec --no-startup-id ~/scripts/randomWall
+
+
+
+# ======================================= Config Commands ==========================================
+
+font pango: Source Code Pro 10
+
+# assign [class="Alacritty"] $ws1
+# assign [class="Subl"] $ws2
+# assign [class="Brave-browser"] $ws3
+# assign [class="Google-chrome"] $ws3
+# assign [class="LibreWolf"] $ws3
+assign [class="TelegramDesktop"] $ws7
+assign [class="discord"] $ws7
+assign [class="Slack"] $ws7
+assign [class="zoom"] $ws6
+assign [class="obs"] $ws8
+assign [class="Shotcut"] $ws8
+assign [class="mpv"] $ws5
+assign [class="vlc"] $ws5 
+assign [class="Spotify"] $ws5
+assign [class="matlab"] $ws4
+assign [class='Subl'] $ws4
+assign [class='code-oss'] $ws4
+assign [class="Evince"] $ws10
+assign [class="Com.github.johnfactotum.Foliate"] $ws10
+
+
+# class                 border  backgr.     text       indicator child_border
+client.focused          $bg     $bg_alt     $fg        $bg       $bd_foc
+client.focused_inactive $bg     $bg         $fg        $bg       $bd_rest
+client.unfocused        $bg     $bg         $fg        $bg       $bd_rest
+client.urgent           $bg     $bg         $fg        $bg       $bd_rest
+client.placeholder      $bg     $bg         $fg        $bg       $bd_rest
+
+client.background       $bg
+
+#gaps inner 4
+#gaps outer 20
+smart_gaps on
+
+for_window [class="^.*"] border pixel 4
+
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Show the sup-mail scratchpad window, if any.
+bindsym mod4+s [class="TelegramDesktop"]  scratchpad show
+
+# ======================================= Execs ==========================================
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec        --no-startup-id xrandr -s 1366x768
+exec        --no-startup-id gksu chmod +x "/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
+
+exec_always --no-startup-id picom --experimental-backend -b
+exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/81.jpg && chmod +x ~/.cache/wal/colors.sh
+exec        --no-startup-id ~/.config/i3/i3start.sh
+exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id nm-applet
+#exec_always --no-startup-id conky
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#exec --no-startup-id pulseaudio &>2 
+#exec_always --no-startup-id feh ~/Pictures/Wallpapers-Downloaded/59.jpg --bg-scale
+#exec_always --no-startup-id compton -f -o 0.8
+#exec_always --no-startup-id volumeicon 
+#exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
+#exec_always gsettings set org.nemo.desktop show-desktop-icons false
+#exec  sh /home/sirius/Desktop/QA/Shell\ Scripts/boot.sh
+
+

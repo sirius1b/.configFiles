@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+
+# This file update repo config(s) for the remote
+# declare -A src
+declare -A dest
+
+## program decleration
+program=("vim"  "vis" "alacritty" 'conky' 'dunst' 'i3' 'lf' 'mpv' 'newsboat' 'picom' 'polybar' 'ranger')
+
+## general script folder accessed by configs, in case ...
+cp -r /home/$( whoami )/scripts ./scripts && echo "Scripts Fetched ...."
+hp=/home/$( whoami )/
+
+## src paths of program keys
+src[vim]='./Files'
+src[vis]='./Files'
+src[alacritty]='./Files'
+src[conky]='./Files'
+src[dunst]='./Files'
+src[i3]='./Files'
+src[lf]='./Files'
+src[mpv]='./Files'
+src[newsboat]='./Files'
+src[picom]='./Files'
+src[polybar]='./Files'
+src[ranger]='./Files'
+
+
+
+## dest paths -> program keys
+dest[vim]=$hp/.vimrc
+dest[vis]=$hp/.config/vis
+dest[alacritty]=$hp/.config/alacritty
+dest[conky]=$hp/.config/conky
+dest[dunst]=$hp/.config/dunst
+dest[i3]=$hp/.config/i3
+dest[lf]=$hp/.config/lf
+dest[mpv]=$hp/.config/mpv
+dest[newsboat]=$hp/.config/newsboat
+dest[picom]=$hp/.config/picom
+dest[polybar]=$hp/.config/polybar
+dest[ranger]=$hp/.config/ranger
+
+
+
+## looping
+for prog  in ${program[@]}; do
+    cp -r $dest[$prog] $src[$prog]
+done
+echo "Config(s) are fetched from System"
+
+
