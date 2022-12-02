@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # This file update repo config(s) for the remote
-# declare -A src
+declare -A src
 declare -A dest
 
 ## program decleration

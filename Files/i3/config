@@ -37,7 +37,10 @@ bindsym $mod+Return exec  alacritty
 bindsym $mod+Shift+q kill
 
 #bindsym $mod+d exec dmenu_run -bw 10 -l 20 -g 1
-bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"  -bw 10 -l 20 -g 1
+#bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"  -bw 10 -l 20 -g 1
+bindsym $mod+d exec rofi -show run
+
+bindsym $mod+s exec rofi -show window
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -145,6 +148,9 @@ bindsym Print      exec python3 ~/scripts/screenshot window
 #bindsym $mod+Print exec python3 ~/.config/i3/screenshot.py custom
 bindsym $mod+Shift+n exec --no-startup-id ~/scripts/randomWall
 
+bindsym $mod+o workspace next
+bindsym $mod+i workspace prev
+
 
 
 # ======================================= Config Commands ==========================================
@@ -181,9 +187,9 @@ client.placeholder      $bg     $bg         $fg        $bg       $bd_rest
 
 client.background       $bg
 
-#gaps inner 4
-#gaps outer 20
-smart_gaps on
+gaps inner 4
+gaps outer 10
+#smart_gaps on
 
 for_window [class="^.*"] border pixel 4
 
@@ -195,22 +201,23 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
-bindsym mod4+s [class="TelegramDesktop"]  scratchpad show
+# bindsym mod4+s [class="TelegramDesktop"]  scratchpad show
 
 # ======================================= Execs ==========================================
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec        --no-startup-id xrandr -s 1366x768
-exec        --no-startup-id gksu chmod +x "/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
+#exec        --no-startup-id gksu chmod +x "/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
 
 exec_always --no-startup-id picom --experimental-backend -b
-exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/81.jpg && chmod +x ~/.cache/wal/colors.sh
-exec        --no-startup-id ~/.config/i3/i3start.sh
+exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/7.jpg && chmod +x ~/.cache/wal/colors.sh
+exec        --no-startup-id ~/scripts/i3start
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id nm-applet
 #exec_always --no-startup-id conky
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ranger & kill ranger
 
 #exec --no-startup-id pulseaudio &>2 
 #exec_always --no-startup-id feh ~/Pictures/Wallpapers-Downloaded/59.jpg --bg-scale

@@ -43,7 +43,8 @@ highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
 
 browser linkhandler
 macro , open-in-browser
-macro v set browser "mpv --ytdl-format=22 %u"; open-in-browser; set browser w3m
+macro v set browser "mpv %u"; open-in-browser; set browser w3m
+#macro v set browser "mpv --ytdl-format=22 %u"; open-in-browser; set browser w3m
 macro b set browser "w3m %u"; open-in-browser; set browser w3m
 macro s set browser "surf %u "; open-in-browser; set browser w3m
 #macro t set browser "tsp youtube-dl --add-metadata -ic" ; open-in-browser ; set browser linkhandler

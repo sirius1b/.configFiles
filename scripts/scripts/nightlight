@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+import json
+import os
+import sys
+
+
+root = '/home/sirius/.config/polybar/'
+file = 'vars.json'
+if os.path.exists(root + file) :
+    with open(root+file,'r') as f:
+        vars = json.load(f)
+else:
+    vars = {}
+
+
+if 'redshift' in vars.keys():
+    val = vars['redshift']
+else :
+    val = 6500 
+
+if len(sys.argv) == 3:
+    os.system('redshift -x > /dev/null')
+    if sys.argv[1] == '-inc':
+        os.system(f'redshift -O {val+int(sys.argv[2])} > /dev/null'); val = val+int(sys.argv[2])
+    elif sys.argv[1] == '-dec':
+        os.system(f'redshift -O {val- int(sys.argv[2])} > /dev/null'); val = val -int(sys.argv[2])
+    elif sys.argv[1] == 'off':
+        os.system(f'redshift -O 6500 > /dev/null'); val= 6500
+    elif sys.argv[1] == 'night': 
+        os.system(f'redshift -O 4500 > /dev/null'); val = 4500
+    else:
+        raise Exception('Unknown Flag')
+       
+print(f'{val}')
+
+
+
+#os.system('polybar-msg hook nightlight 1 > /dev/null')
+vars['redshift'] = val
+with open(root+file,'w') as f:
+    json.dump(vars, f)

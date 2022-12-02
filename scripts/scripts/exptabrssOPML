@@ -1,0 +1,3 @@
+#! /usr/bin/bash
+newsboat -e > "/home/sirius/Tablet Sync/rss.opml"
+
