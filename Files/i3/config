@@ -210,14 +210,14 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec        --no-startup-id xrandr -s 1366x768
 #exec        --no-startup-id gksu chmod +x "/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
 
-exec_always --no-startup-id picom --experimental-backend -b
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/7.jpg && chmod +x ~/.cache/wal/colors.sh
 exec        --no-startup-id ~/scripts/i3start
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id nm-applet
 #exec_always --no-startup-id conky
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id ranger & kill ranger
+# exec_always --no-startup-id ranger & kill ranger
 
 #exec --no-startup-id pulseaudio &>2 
 #exec_always --no-startup-id feh ~/Pictures/Wallpapers-Downloaded/59.jpg --bg-scale
@@ -226,5 +226,9 @@ exec_always --no-startup-id ranger & kill ranger
 #exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 #exec_always gsettings set org.nemo.desktop show-desktop-icons false
 #exec  sh /home/sirius/Desktop/QA/Shell\ Scripts/boot.sh
+
+# xinput set-prop "<Touch Pad Name>" "libinput Tapping Enabled" 1 ; 
+# find using -> xinput
+exec xinput set-prop "MSFT0001:01 04F3:31AD Touchpad" "libinput Tapping Enabled" 1
 
 

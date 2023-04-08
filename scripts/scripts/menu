@@ -4,7 +4,7 @@ source ~/.cache/wal/colors.sh
 bg=$color3;
 fg=#ffffff;
 echo $fg
-list="brave\nFirefox\nLibreWolf\nVim\nRanger\nSyncthing\nChrome\nSearx\nANIME\nSublime-Text\nZotero\nSlack\nAnki\nword\nexcel\nppt\npdf\nVSCODE\nMATLAB\nJoplin-Desktop\nAndroid-Studio\nOBS\nShotcut\nClassroom\nGmail-IIIT\nCalendar\nPomodoro-25m\nBreak-5m\nscholar\ncamera\nmusic\nnautilus\ninstagram\nmaps";
+list="brave\nFirefox\nLibreWolf\nVim\nRanger\nSyncthing\nChrome\nSearx\nANIME\nSublime-Text\nZotero\nSlack\nAnki\nword\nexcel\nppt\npdf\nVSCODE\nMATLAB\nJoplin-Desktop\nAndroid-Studio\nOBS\nShotcut\nClassroom\nGmail-IIIT\nCalendar\nPomodoro-25m\nBreak-5m\nscholar\ncamera\nmusic\nnautilus\ninstagram";
 echo $list;
 com=`echo $list| tr '[:upper:]' '[:lower:]' | dmenu -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -c -bw 10 -l 25 -g 1 `
 #echo $com
@@ -12,13 +12,13 @@ declare -A menu
 menu[pomodoro-25m]='alacritty -e tty-countdown -m 25 && notify-send -t 10000 Timer "Time is over take a break" -u low   &&   play /home/sirius/Projects/CODEBASE_Projects/timer/beepe.mp3'
 menu[break-5m]='alacritty -e tty-countdown -m 5 && notify-send -t 10000 Timer "Time is over take a break" -u low   &&   play /home/sirius/Projects/CODEBASE_Projects/timer/beepe.mp3';
 menu[nautilus]='nautilus';
-menu[brave]='brave -force-device-scale-factor=1.1';
+menu[brave]='brave';
 menu[firefox]='firefox';
 menu[libreWolf]='LibreWolf.AppImage';
 menu[ranger]='alacritty -e ranger';
 menu[vim]="alacritty -e vim";
 menu[syncthing]='Syncthing';
-menu[chrome]='google-chrome-stable -force-device-scale-factor=1.1';
+menu[chrome]=google-chrome-stable;
 menu[searx]=search;
 menu[anime]='alacritty -e ani-cli';
 menu[music]='alacritty -e cmus';
@@ -38,19 +38,11 @@ menu[joplin-desktop]=Joplin.AppImage;
 menu[android-studio]=android-studio;
 menu[obs]=obs;
 menu[shotcut]=shotcut;
-#menu[classroom]='google-chrome-stable -app="https://classroom.google.com/h"';
-#menu[gmail-iiit]='google-chrome-stable -app="https://mail.google.com/mail/u/0/#inbox"':
-#menu[calendar]="google-chrome-stable -app='https://calendar.google.com/'";
-#menu[scholar]="google-chrome-stable -app='https://scholar.google.com/'";
-#menu[instagram]="google-chrome-stable -app='https://www.instagram.com/?hl=en'"
-#menu[maps]="google-chrome-stable -app='https://maps.google.com'"
-menu[classroom]='brave --app="https://classroom.google.com/h"';
-menu[gmail-iiit]='brave --app="https://mail.google.com/mail/u/0/#inbox"':
-menu[calendar]="brave --app='https://calendar.google.com/'";
-menu[scholar]="brave --app='https://scholar.google.com/'";
-menu[instagram]="brave --app='https://www.instagram.com/?hl=en'"
-menu[maps]="brave --app='https://maps.google.com'"
-
+menu[classroom]='google-chrome-stable -app="https://classroom.google.com/h"';
+menu[gmail-iiit]='google-chrome-stable -app="https://mail.google.com/mail/u/0/#inbox"':
+menu[calendar]="google-chrome-stable -app='https://calendar.google.com/'";
+menu[scholar]="google-chrome-stable -app='https://scholar.google.com/'";
+menu[instagram]="google-chrome-stable -app='https://www.instagram.com/?hl=en'"
 menu[camera]="mpv --profile=low-latency --untimed /dev/video0";
 menu[stream]="./.config/i3/stream.sh"
 
