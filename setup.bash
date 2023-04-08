@@ -14,3 +14,10 @@ sudo make clean install & rm config.h
 
 yay -S pfetch
 
+
+crontab -l > mycron
+echo "0 * * * * ~/scripts/pushAll" >> mycron
+crontab mycron
+rm mycron
+
+

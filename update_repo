@@ -8,7 +8,7 @@ declare -A dest
 program=("vim"  "vis" "alacritty" 'conky' 'dunst' 'i3' 'lf' 'mpv' 'newsboat' 'picom' 'polybar' 'ranger')
 
 ## general script folder accessed by configs, in case ...
-cp -r /home/$( whoami )/scripts ./scripts && echo "Scripts Fetched ...."
+cp -r /home/$( whoami )/scripts . && echo "Scripts Fetched ...."
 hp=/home/$( whoami )/
 
 ## src paths of program keys

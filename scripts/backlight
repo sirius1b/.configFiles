@@ -7,8 +7,9 @@ def read(file):
         return int(f.read())
 def write(file, val):
     os.system(f'echo {val}| tee {file} > /dev/null')
-file="/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
-file1="/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/max_brightness"
+# update this file path for your system
+file="/sys/devices/pci0000:00/0000:00:02.0/drm/card1/card1-eDP-1/intel_backlight/brightness"
+file1="/sys/devices/pci0000:00/0000:00:02.0/drm/card1/card1-eDP-1/intel_backlight/max_brightness"
 mx = read(file1)
 val = read(file)
 delta = 40
