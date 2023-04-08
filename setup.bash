@@ -6,8 +6,11 @@ git clone https://gitlab.com/dwt1/dmenu-distrotube.git ~/.opt/demnu_dt
 cd ~/.opt/dmenu_dt
 sudo make clean install & rm config.h
 
-# echo export LC_CTYPE="en_GB.utf8" >> .bashrc
+# echo export LC_CTYPE="en_GB.utf8" >> .zshrc
 
 # sudo locale-gen
 # sudo localectl set-locale LC_CTYPE=en_US.UTF-8
 #
+
+yay -S pfetch
+
