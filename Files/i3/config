@@ -211,7 +211,7 @@ exec        --no-startup-id xrandr -s 1366x768
 #exec        --no-startup-id gksu chmod +x "/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-LVDS-1/intel_backlight/brightness"
 
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
-exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/7.jpg && chmod +x ~/.cache/wal/colors.sh
+exec_always --no-startup-id wal -i ~/Pictures/Wallpapers-Downloaded/92.png && chmod +x ~/.cache/wal/colors.sh
 exec        --no-startup-id ~/scripts/i3start
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id nm-applet
@@ -220,7 +220,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec_always --no-startup-id ranger & kill ranger
 
 #exec --no-startup-id pulseaudio &>2 
-#exec_always --no-startup-id feh ~/Pictures/Wallpapers-Downloaded/59.jpg --bg-scale
+#exec_always --no-startup-id feh ~/Pictures/Wallpapers-Downloaded/92.png --bg-scale
 #exec_always --no-startup-id compton -f -o 0.8
 #exec_always --no-startup-id volumeicon 
 #exec_always gsettings set org.gnome.desktop.background show-desktop-icons false

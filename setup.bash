@@ -1,4 +1,4 @@
-yay -S i3-gaps polybar alacritty blueman dunst picom network-manager-applet-git dmenu rofi pavucontrol
+yay -S i3-gaps polybar alacritty blueman dunst picom network-manager-applet-git dmenu rofi pavucontrol pywal i3lock sublime-text-4
 sudo systemctl start fstrim.timer 
 yay -S ttf-adobe-source-code-pro-fonts ttf-font-awesome-5 ttf-font-awesome otf-font-awesome siji-ttf ttf-unifont
 yay -S redshift
@@ -13,6 +13,9 @@ sudo make clean install & rm config.h
 #
 
 yay -S pfetch
+
+python -m pip install pywalfox
+chmod +x -R .local/lib/python3.10/site-packages/pywalfox/bin
 
 
 crontab -l > mycron

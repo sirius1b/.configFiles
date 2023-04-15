@@ -2,10 +2,10 @@
 notify-send -t 3000 Asthetic "Setting random wallpaper..." -u normal
 #wget "https://source.unsplash.com/1600x900?sunlight" -O ~/Pictures/Wallpapers-Downloaded/img.jpg
 #wget "https://source.unsplash.com/1366x768?morning" -O ~/Pictures/Wallpapers-Downloaded/img.jpg
-#opt="night"
-opt="china&japan&night&nature&street&istanbul"
+opt="aesthetic&music&mountains"
 
 
-wget "https://source.unsplash.com/1366x768?$opt" -O ~/Pictures/Wallpapers-Downloaded/img.jpg
+wget "https://source.unsplash.com/1920x1080?$opt" -O ~/Pictures/Wallpapers-Downloaded/img.jpg
 
+rm -rf ~/.cache/wal
 wal -i ~/Pictures/Wallpapers-Downloaded/img.jpg
