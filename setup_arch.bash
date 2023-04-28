@@ -1,4 +1,4 @@
-yay -S i3-gaps polybar alacritty blueman dunst picom network-manager-applet-git dmenu rofi pavucontrol pywal i3lock sublime-text-4
+yay -S i3-gaps polybar alacritty blueman dunst picom network-manager-applet-git dmenu rofi pavucontrol pywal i3lock sublime-text-4 cli-visualizer tty-clock tty-countdown-git
 sudo systemctl start fstrim.timer 
 yay -S ttf-adobe-source-code-pro-fonts ttf-font-awesome-5 ttf-font-awesome otf-font-awesome siji-ttf ttf-unifont
 yay -S redshift
@@ -22,5 +22,7 @@ crontab -l > mycron
 echo "0 * * * * ~/scripts/pushAll" >> mycron
 crontab mycron
 rm mycron
+
+yay -S conky dmenu
 
 
